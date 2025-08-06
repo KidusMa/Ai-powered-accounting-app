@@ -1,6 +1,6 @@
 # AI-Powered Accounting Agent
 
-A modern, colorful web application that provides intelligent accounting automation with AI-powered features for financial management.
+A modern, attractive web application that provides intelligent accounting automation with AI-powered features for financial management.
 
 ## 🚀 Features
 
@@ -56,7 +56,7 @@ A modern, colorful web application that provides intelligent accounting automati
 - **Real-time Updates**: Live data and status indicators
 
 ## 🛠️ Technology Stack
-
+]
 - **React 18** with TypeScript
 - **Tailwind CSS** for styling
 - **Framer Motion** for animations
