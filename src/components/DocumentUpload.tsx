@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { 
   Upload, 
   FileText, 
@@ -172,65 +171,55 @@ const DocumentUpload: React.FC = () => {
       </div>
 
       {/* Upload Area */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-purple-500 to-pink-500 p-8 rounded-xl text-white"
+      <div 
+        className={`border-2 border-dashed rounded-xl p-8 text-center transition-all ${
+          dragActive ? 'border-white bg-white/20' : 'border-white/30'
+        }`}
+        onDragEnter={handleDrag}
+        onDragLeave={handleDrag}
+        onDragOver={handleDrag}
+        onDrop={handleDrop}
       >
-        <div 
-          className={`border-2 border-dashed rounded-xl p-8 text-center transition-all ${
-            dragActive ? 'border-white bg-white/20' : 'border-white/30'
-          }`}
-          onDragEnter={handleDrag}
-          onDragLeave={handleDrag}
-          onDragOver={handleDrag}
-          onDrop={handleDrop}
+        <Upload className="w-16 h-16 mx-auto mb-4 text-white/70" />
+        <h3 className="text-xl font-semibold mb-2">Upload Corporate Documents</h3>
+        <p className="text-white/80 mb-6">
+          Drag and drop files here, or click to browse
+        </p>
+        
+        <input
+          ref={fileInputRef}
+          type="file"
+          multiple
+          onChange={handleFileSelect}
+          className="hidden"
+          accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt"
+        />
+        
+        <button
+          onClick={() => fileInputRef.current?.click()}
+          disabled={isUploading}
+          className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50"
         >
-          <Upload className="w-16 h-16 mx-auto mb-4 text-white/70" />
-          <h3 className="text-xl font-semibold mb-2">Upload Corporate Documents</h3>
-          <p className="text-white/80 mb-6">
-            Drag and drop files here, or click to browse
-          </p>
-          
-          <input
-            ref={fileInputRef}
-            type="file"
-            multiple
-            onChange={handleFileSelect}
-            className="hidden"
-            accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt"
-          />
-          
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => fileInputRef.current?.click()}
-            disabled={isUploading}
-            className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50"
-          >
-            {isUploading ? (
-              <div className="flex items-center space-x-2">
-                <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
-                <span>Uploading...</span>
-              </div>
-            ) : (
-              <div className="flex items-center space-x-2">
-                <FolderOpen className="w-5 h-5" />
-                <span>Choose Files</span>
-              </div>
-            )}
-          </motion.button>
-          
-          <div className="mt-4 text-sm text-white/70">
-            Supported formats: PDF, DOC, DOCX, XLS, XLSX, CSV, TXT
-          </div>
+          {isUploading ? (
+            <div className="flex items-center space-x-2">
+              <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+              <span>Uploading...</span>
+            </div>
+          ) : (
+            <div className="flex items-center space-x-2">
+              <FolderOpen className="w-5 h-5" />
+              <span>Choose Files</span>
+            </div>
+          )}
+        </button>
+        
+        <div className="mt-4 text-sm text-white/70">
+          Supported formats: PDF, DOC, DOCX, XLS, XLSX, CSV, TXT
         </div>
-      </motion.div>
+      </div>
 
       {/* Document Categories */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 md:grid-cols-4 gap-4"
       >
         {[
@@ -245,18 +234,15 @@ const DocumentUpload: React.FC = () => {
             <p className="text-2xl font-bold">{category.count}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Uploaded Documents */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Recent Documents</h3>
         <div className="space-y-3">
           {documents.map((doc, index) => (
-            <motion.div
+            <div
               key={doc.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center justify-between">
@@ -297,15 +283,13 @@ const DocumentUpload: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Processing Stats */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 md:grid-cols-3 gap-4"
       >
         {[
@@ -318,7 +302,7 @@ const DocumentUpload: React.FC = () => {
             <p className="text-sm opacity-90">{stat.label}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

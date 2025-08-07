@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -80,9 +79,7 @@ const MonthlyReport: React.FC = () => {
       </div>
 
       {/* Report Controls */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-teal-500 to-cyan-500 p-6 rounded-xl text-white"
       >
         <div className="flex items-center justify-between">
@@ -104,9 +101,7 @@ const MonthlyReport: React.FC = () => {
             </div>
           </div>
           
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <button
             onClick={handleGenerateReport}
             disabled={isGenerating}
             className="bg-white text-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50"
@@ -122,14 +117,12 @@ const MonthlyReport: React.FC = () => {
                 <span>Generate Report</span>
               </div>
             )}
-          </motion.button>
+          </button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Financial Summary */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 md:grid-cols-3 gap-6"
       >
         {[
@@ -160,12 +153,10 @@ const MonthlyReport: React.FC = () => {
             <p className="text-3xl font-bold">${stat.value.toLocaleString()}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Expense Categories */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 lg:grid-cols-2 gap-6"
       >
         <div className="bg-white rounded-xl p-6 shadow-lg">
@@ -237,12 +228,10 @@ const MonthlyReport: React.FC = () => {
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Monthly Trends */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-white rounded-xl p-6 shadow-lg"
       >
         <h3 className="text-lg font-semibold text-gray-800 mb-4">Monthly Trends</h3>
@@ -264,12 +253,10 @@ const MonthlyReport: React.FC = () => {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Report Actions */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 md:grid-cols-4 gap-4"
       >
         {[
@@ -286,12 +273,10 @@ const MonthlyReport: React.FC = () => {
             <p className="text-sm opacity-90">{action.value}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* AI Insights */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 rounded-xl text-white"
       >
         <h3 className="text-xl font-semibold mb-4">AI Insights</h3>
@@ -315,7 +300,7 @@ const MonthlyReport: React.FC = () => {
             </ul>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

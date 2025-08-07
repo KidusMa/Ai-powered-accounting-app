@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { 
   CreditCard, 
   Building2, 
@@ -96,9 +95,7 @@ const BankConnection: React.FC = () => {
       </div>
 
       {/* Security Info */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-blue-500 to-cyan-500 p-6 rounded-xl text-white"
       >
         <div className="flex items-center space-x-3 mb-4">
@@ -119,18 +116,15 @@ const BankConnection: React.FC = () => {
             <span>FDIC insured</span>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Connected Accounts */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Connected Accounts</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {accounts.map((account, index) => (
-            <motion.div
+            <div
               key={account.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center justify-between mb-4">
@@ -172,15 +166,13 @@ const BankConnection: React.FC = () => {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Add New Account */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-purple-500 to-pink-500 p-6 rounded-xl text-white"
       >
         <h3 className="text-xl font-semibold mb-4">Add New Account</h3>
@@ -228,9 +220,7 @@ const BankConnection: React.FC = () => {
           </div>
         </div>
         
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+        <button
           onClick={handleConnect}
           disabled={isConnecting}
           className="mt-6 w-full bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -243,8 +233,8 @@ const BankConnection: React.FC = () => {
           ) : (
             'Connect Account'
           )}
-        </motion.button>
-      </motion.div>
+        </button>
+      </div>
     </div>
   );
 };

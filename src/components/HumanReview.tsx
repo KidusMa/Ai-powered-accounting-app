@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { 
   UserCheck, 
   CheckCircle, 
   XCircle,
-  AlertCircle,
   Eye,
   Edit,
   Clock,
   Filter,
-  Search,
   ThumbsUp,
   ThumbsDown,
   MessageSquare,
-  Send,
   DollarSign,
   FileText,
   Tag,
@@ -110,7 +106,6 @@ const HumanReview: React.FC = () => {
 
   const handleBulkApprove = async () => {
     setIsProcessing(true);
-    // Simulate bulk approval
     await new Promise(resolve => setTimeout(resolve, 2000));
     setReviewItems(prev => prev.map(item => 
       item.status === 'pending' ? { ...item, status: 'approved', reviewer: 'Current User' } : item
@@ -190,11 +185,7 @@ const HumanReview: React.FC = () => {
           Final review and approval process for AI-processed items
         </p>
       </div>
-
-      {/* Review Stats */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-yellow-500 to-orange-500 p-6 rounded-xl text-white"
       >
         <div className="flex items-center space-x-3 mb-4">
@@ -219,9 +210,8 @@ const HumanReview: React.FC = () => {
             <p>Approval Rate</p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Filters */}
       <div className="flex items-center space-x-4">
         <Filter className="w-5 h-5 text-gray-600" />
         <div className="flex flex-wrap gap-2">
@@ -260,10 +250,7 @@ const HumanReview: React.FC = () => {
         </div>
       </div>
 
-      {/* Bulk Actions */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-green-500 to-emerald-500 p-4 rounded-xl text-white"
       >
         <div className="flex items-center justify-between">
@@ -271,9 +258,7 @@ const HumanReview: React.FC = () => {
             <CheckCircle className="w-5 h-5" />
             <span className="font-semibold">Bulk Actions</span>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <button
             onClick={handleBulkApprove}
             disabled={isProcessing || pendingCount === 0}
             className="bg-white text-green-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50"
@@ -289,20 +274,17 @@ const HumanReview: React.FC = () => {
                 <span>Approve All Pending</span>
               </div>
             )}
-          </motion.button>
+          </button>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Review Items */}
+
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Items for Review</h3>
         <div className="space-y-3">
           {filteredItems.map((item, index) => (
-            <motion.div
+            <div
               key={item.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center justify-between">
@@ -339,22 +321,18 @@ const HumanReview: React.FC = () => {
                   
                   {item.status === 'pending' && (
                     <div className="flex space-x-2">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                      <button
                         onClick={() => handleApprove(item.id)}
                         className="p-2 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition-colors"
                       >
                         <ThumbsUp className="w-4 h-4" />
-                      </motion.button>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                      </button>
+                      <button
                         onClick={() => handleReject(item.id)}
                         className="p-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors"
                       >
                         <ThumbsDown className="w-4 h-4" />
-                      </motion.button>
+                      </button>
                       <button className="p-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition-colors">
                         <MessageSquare className="w-4 h-4" />
                       </button>
@@ -369,15 +347,13 @@ const HumanReview: React.FC = () => {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Review Actions */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+
+      <div 
         className="grid grid-cols-1 md:grid-cols-3 gap-4"
       >
         {[
@@ -393,7 +369,7 @@ const HumanReview: React.FC = () => {
             <p className="text-sm opacity-90">{action.value}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

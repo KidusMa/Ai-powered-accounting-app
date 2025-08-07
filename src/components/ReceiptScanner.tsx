@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { 
   Camera, 
   Upload, 
@@ -116,9 +115,7 @@ const ReceiptScanner: React.FC = () => {
       </div>
 
       {/* Input Methods */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-green-500 to-emerald-500 p-6 rounded-xl text-white"
       >
         <div className="flex space-x-2 mb-6">
@@ -151,9 +148,7 @@ const ReceiptScanner: React.FC = () => {
               <p className="text-white/80 mb-4">
                 Point your camera at a receipt to automatically capture and process
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <button
                 onClick={handleScan}
                 disabled={isScanning}
                 className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50"
@@ -169,7 +164,7 @@ const ReceiptScanner: React.FC = () => {
                     <span>Start Scanning</span>
                   </div>
                 )}
-              </motion.button>
+              </button>
             </div>
           </div>
         )}
@@ -191,9 +186,7 @@ const ReceiptScanner: React.FC = () => {
                 onChange={handleFileUpload}
                 className="hidden"
               />
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <button
                 onClick={() => fileInputRef.current?.click()}
                 disabled={isUploading}
                 className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50"
@@ -209,7 +202,7 @@ const ReceiptScanner: React.FC = () => {
                     <span>Choose Files</span>
                   </div>
                 )}
-              </motion.button>
+              </button>
             </div>
           </div>
         )}
@@ -226,9 +219,7 @@ const ReceiptScanner: React.FC = () => {
               <div className="bg-white/10 rounded-lg p-4 mb-4">
                 <p className="text-sm font-mono">receipts@aiaccounting.com</p>
               </div>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <button
                 onClick={handleEmailForward}
                 className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
@@ -236,22 +227,19 @@ const ReceiptScanner: React.FC = () => {
                   <Mail className="w-5 h-5" />
                   <span>Set Up Email Forwarding</span>
                 </div>
-              </motion.button>
+              </button>
             </div>
           </div>
         )}
-      </motion.div>
+      </div>
 
       {/* Recent Receipts */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Recent Receipts</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {receipts.map((receipt, index) => (
-            <motion.div
+            <div
               key={receipt.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center justify-between mb-4">
@@ -296,15 +284,13 @@ const ReceiptScanner: React.FC = () => {
                   Delete
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Processing Stats */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 md:grid-cols-3 gap-4"
       >
         {[
@@ -317,7 +303,7 @@ const ReceiptScanner: React.FC = () => {
             <p className="text-sm opacity-90">{stat.label}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

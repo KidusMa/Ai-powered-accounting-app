@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { 
   CheckCircle, 
   AlertCircle,
@@ -115,9 +114,7 @@ const Reconciliation: React.FC = () => {
       </div>
 
       {/* Reconciliation Stats */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-orange-500 to-red-500 p-6 rounded-xl text-white"
       >
         <div className="flex items-center space-x-3 mb-4">
@@ -142,7 +139,7 @@ const Reconciliation: React.FC = () => {
             <p>Accuracy Rate</p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Status Filter */}
       <div className="flex items-center space-x-4">
@@ -170,9 +167,7 @@ const Reconciliation: React.FC = () => {
       </div>
 
       {/* Bulk Reconciliation */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="bg-gradient-to-r from-green-500 to-emerald-500 p-4 rounded-xl text-white"
       >
         <div className="flex items-center justify-between">
@@ -180,9 +175,7 @@ const Reconciliation: React.FC = () => {
             <RefreshCw className="w-5 h-5" />
             <span className="font-semibold">Bulk Reconciliation</span>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <button
             onClick={handleReconcile}
             disabled={isReconciling}
             className="bg-white text-green-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors disabled:opacity-50"
@@ -198,20 +191,17 @@ const Reconciliation: React.FC = () => {
                 <span>Reconcile All Accounts</span>
               </div>
             )}
-          </motion.button>
+          </button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Reconciliation Items */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-800">Account Reconciliation</h3>
         <div className="space-y-3">
           {filteredItems.map((item, index) => (
-            <motion.div
+            <div
               key={item.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center justify-between">
@@ -266,15 +256,13 @@ const Reconciliation: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Reconciliation Charts */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         <div className="bg-white rounded-xl p-6 shadow-lg">
@@ -318,12 +306,10 @@ const Reconciliation: React.FC = () => {
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Quick Actions */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <div 
         className="grid grid-cols-1 md:grid-cols-3 gap-4"
       >
         {[
@@ -339,7 +325,7 @@ const Reconciliation: React.FC = () => {
             <p className="text-sm opacity-90">{action.value}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
