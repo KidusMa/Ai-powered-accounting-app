@@ -219,13 +219,6 @@ The application is fully responsive and optimized for:
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🆘 Support
-
-For support and questions:
-- Create an issue in the repository
-- Check the documentation
-- Contact the development team
-
 ---
 
 **Built with ❤️ using React, TypeScript, and Tailwind CSS** 
